@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="/Users/weizhengli/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>
+
+    <context id="default" targetRuntime="MyBatis3">
+        <!-- To prevent a lot of comments in the generated code, add the following configuration control -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- Database Connection -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/similarity_search?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root"
+                        password="root123">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- The model layer corresponding to the data table  -->
+        <javaModelGenerator targetPackage="SpringBoot.entity"
+                            targetProject="/Users/weizhengli/Desktop/metric_space_context/MetricSpaceContext/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- sql mapper mapping configuration file -->
+        <sqlMapGenerator targetPackage="mybatis.mapper"
+                         targetProject="/Users/weizhengli/Desktop/metric_space_context/MetricSpaceContext/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- mapper interface in mybatis3 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="SpringBoot.dao"
+                             targetProject="/Users/weizhengli/Desktop/metric_space_context/MetricSpaceContext/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="feedback" domainObjectName="Feedback"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+    </context>
+</generatorConfiguration>
